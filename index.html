@@ -545,24 +545,6 @@
             border-collapse: collapse;
             margin-top: 16px;
             font-size: 15px;
-            overflow-x: auto;
-            display: block;
-        }
-
-        .data-table thead {
-            display: table;
-            width: 100%;
-        }
-
-        .data-table tbody {
-            display: block;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .data-table tr {
-            display: table;
-            width: 100%;
         }
 
         .data-table th {
@@ -607,27 +589,6 @@
 
         .highlight-rule strong {
             color: var(--gold);
-        }
-
-        /* ── COPY BUTTON ── */
-        .copy-btn {
-            background: var(--gold);
-            color: var(--green-dark);
-            border: none;
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 13px;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .copy-btn:hover {
-            background: #F5B820;
-            transform: scale(1.05);
         }
 
         /* ── DIVIDER ── */
@@ -711,7 +672,7 @@
             }
         }
 
-        /* ── LOADING & ALERTS ── */
+        /* ── ALERTS ── */
         .alert {
             padding: 16px 20px;
             border-radius: 8px;
@@ -740,60 +701,6 @@
             border-left: 4px solid var(--green-dark);
         }
 
-        /* ── TABS FOR SECTIONS ── */
-        .section-tabs {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-            border-bottom: 2px solid #E0E8E4;
-            padding-bottom: 0;
-        }
-
-        .section-tab {
-            padding: 12px 20px;
-            border: none;
-            background: none;
-            font-family: 'Sarabun', sans-serif;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            color: var(--text-muted);
-            border-bottom: 3px solid transparent;
-            transition: all 0.2s;
-        }
-
-        .section-tab:hover {
-            color: var(--green-dark);
-        }
-
-        .section-tab.active {
-            color: var(--green-dark);
-            border-bottom-color: var(--green-dark);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        /* ── GRID LAYOUT ── */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
         /* ── SUMMARY BOX ── */
         .summary-box {
             background: var(--green-light);
@@ -806,8 +713,8 @@
         .summary-item {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(27, 77, 53, 0.1);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(27, 77, 53, 0.2);
             font-size: 15px;
         }
 
@@ -820,12 +727,26 @@
         }
 
         .summary-total {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 800;
             color: var(--green-dark);
-            margin-top: 12px;
-            padding-top: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
             border-top: 2px solid var(--green-dark);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
     </style>
 </head>
@@ -896,8 +817,7 @@
 
                     <div style="margin-top: 20px; padding: 16px; background: #E8F4EC; border-radius: 8px;">
                         <p style="font-size: 14px; color: var(--text-muted);">
-                            <strong>💡 หมายเหตุ:</strong> ความสูงจากพื้นดิน สามารถใช้ตรีโกณมิติคำนวณได้:<br>
-                            <code style="background: rgba(27,77,53,0.1); padding: 4px 8px; border-radius: 4px;">ความสูง = ความยาวท่อ × sin(มุม)</code>
+                            <strong>💡 หมายเหตุ:</strong> ความสูงจากพื้นดิน สามารถใช้ตรีโกณมิติคำนวณได้
                         </p>
                     </div>
                 </div>
@@ -1050,8 +970,8 @@
                 </div>
             </div>
 
+            <!-- PUMP TYPE SELECTION -->
             <div class="card">
-                <!-- PUMP TYPE SELECTION -->
                 <div class="input-group">
                     <label class="input-label">📋 เลือกประเภทปั๊ม</label>
                     <div class="btn-group">
@@ -1064,6 +984,7 @@
                     </div>
                 </div>
 
+                <!-- BOREHOLE CALCULATOR -->
                 <div id="calc-borehole" class="tab-content active">
                     <div style="background: var(--green-light); padding: 16px; border-radius: 8px; margin-bottom: 20px;">
                         <p style="font-weight: 700; color: var(--green-dark);">🔩 ปั๊มบาดาล</p>
@@ -1073,8 +994,8 @@
                         <label class="input-label">ระยะสูบน้ำ (ความลึกบ่อ)</label>
                         <span class="input-hint">ความลึกจากปากบ่อถึงต่อท่อ</span>
                         <div class="input-wrapper">
-                            <input type="number" id="bore-depth" placeholder="เช่น 20" min="0" step="0.1">
-                            <div class="input-unit">เมตร</div>
+                            <input type="number" id="bore-depth" placeholder="เช่น 20" min="0" step="0.1" value="0">
+                            <div class="input-unit">ม.</div>
                         </div>
                     </div>
 
@@ -1082,8 +1003,8 @@
                         <label class="input-label">ระดับน้ำปากบ่อ</label>
                         <span class="input-hint">ความลึกของบ่อ - ระยะสูบน้ำ</span>
                         <div class="input-wrapper">
-                            <input type="number" id="bore-water-level" placeholder="เช่น 10" min="0" step="0.1">
-                            <div class="input-unit">เมตร</div>
+                            <input type="number" id="bore-water-level" placeholder="เช่น 10" min="0" step="0.1" value="0">
+                            <div class="input-unit">ม.</div>
                         </div>
                     </div>
 
@@ -1091,29 +1012,13 @@
                         <label class="input-label">ความสูงในการส่งน้ำจากพื้นดิน</label>
                         <span class="input-hint">ความสูงจากพื้นดินถึงจุดจ่ายน้ำ</span>
                         <div class="input-wrapper">
-                            <input type="number" id="bore-delivery-height" placeholder="เช่น 16" min="0" step="0.1">
-                            <div class="input-unit">เมตร</div>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-primary" onclick="calculateBorehead()" style="width: 100%; margin-top: 12px;">
-                        <i class="fas fa-calculator"></i> คำนวณ Head (แนวดิ่ง)
-                    </button>
-
-                    <div id="bore-result" style="display: none; margin-top: 16px;">
-                        <div class="result-box">
-                            <h3>Head จากระยะส่งแนวดิ่ง (ปั๊มบาดาล)</h3>
-                            <div class="result-value" id="bore-result-value">0</div>
-                            <div class="result-unit">เมตร</div>
-                        </div>
-                        <div class="formula-box green" style="margin-top: 16px;">
-                            <div class="formula-line">
-                                <span class="fval" id="bore-calc-show"></span>
-                            </div>
+                            <input type="number" id="bore-delivery-height" placeholder="เช่น 16" min="0" step="0.1" value="0">
+                            <div class="input-unit">ม.</div>
                         </div>
                     </div>
                 </div>
 
+                <!-- CENTRIFUGAL CALCULATOR -->
                 <div id="calc-centrifugal" class="tab-content">
                     <div style="background: var(--green-light); padding: 16px; border-radius: 8px; margin-bottom: 20px;">
                         <p style="font-weight: 700; color: var(--green-dark);">⚙️ ปั๊มหอยโข่ง</p>
@@ -1123,8 +1028,8 @@
                         <label class="input-label">ความลึกของท่อหัวดูด</label>
                         <span class="input-hint">ระยะจากผิวน้ำถึงปั๊ม</span>
                         <div class="input-wrapper">
-                            <input type="number" id="cent-suction-depth" placeholder="เช่น 4" min="0" step="0.1">
-                            <div class="input-unit">เมตร</div>
+                            <input type="number" id="cent-suction-depth" placeholder="เช่น 4" min="0" step="0.1" value="0">
+                            <div class="input-unit">ม.</div>
                         </div>
                     </div>
 
@@ -1132,25 +1037,8 @@
                         <label class="input-label">ความสูงในการส่งน้ำ</label>
                         <span class="input-hint">ความสูงจากพื้นดินถึงจุดจ่ายน้ำ</span>
                         <div class="input-wrapper">
-                            <input type="number" id="cent-delivery-height" placeholder="เช่น 2" min="0" step="0.1">
-                            <div class="input-unit">เมตร</div>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-primary" onclick="calculateCenthead()" style="width: 100%; margin-top: 12px;">
-                        <i class="fas fa-calculator"></i> คำนวณ Head (แนวดิ่ง)
-                    </button>
-
-                    <div id="cent-result" style="display: none; margin-top: 16px;">
-                        <div class="result-box">
-                            <h3>Head จากระยะส่งแนวดิ่ง (ปั๊มหอยโข่ง)</h3>
-                            <div class="result-value" id="cent-result-value">0</div>
-                            <div class="result-unit">เมตร</div>
-                        </div>
-                        <div class="formula-box green" style="margin-top: 16px;">
-                            <div class="formula-line">
-                                <span class="fval" id="cent-calc-show"></span>
-                            </div>
+                            <input type="number" id="cent-delivery-height" placeholder="เช่น 2" min="0" step="0.1" value="0">
+                            <div class="input-unit">ม.</div>
                         </div>
                     </div>
                 </div>
@@ -1167,37 +1055,20 @@
                     <label class="input-label">ความยาวท่อทั้งหมด</label>
                     <span class="input-hint">รวม: แนวดิ่ง + แนวนอน + แนวเอียง</span>
                     <div class="input-wrapper">
-                        <input type="number" id="pipe-length" placeholder="เช่น 24" min="0" step="0.1">
-                        <div class="input-unit">เมตร</div>
+                        <input type="number" id="pipe-length" placeholder="เช่น 24" min="0" step="0.1" value="0">
+                        <div class="input-unit">ม.</div>
                     </div>
                 </div>
 
                 <div class="input-group">
                     <label class="input-label">ขนาดท่อส่ง</label>
-                    <select id="pipe-size" style="width: 100%;">
+                    <select id="pipe-size">
                         <option value="">-- เลือกขนาดท่อ --</option>
                         <option value="1.5">1.5 นิ้ว (divisor: 15)</option>
                         <option value="2">2 นิ้ว (divisor: 20)</option>
                         <option value="3">3 นิ้ว (divisor: 30)</option>
                         <option value="4">4 นิ้ว (divisor: 40)</option>
                     </select>
-                </div>
-
-                <button class="btn btn-primary" onclick="calculatePipeHead()" style="width: 100%; margin-top: 12px;">
-                    <i class="fas fa-calculator"></i> คำนวณ Head (ท่อ)
-                </button>
-
-                <div id="pipe-result" style="display: none; margin-top: 16px;">
-                    <div class="result-box">
-                        <h3>Head จากความยาวท่อ</h3>
-                        <div class="result-value" id="pipe-result-value">0</div>
-                        <div class="result-unit">เมตร</div>
-                    </div>
-                    <div class="formula-box orange" style="margin-top: 16px;">
-                        <div class="formula-line">
-                            <span class="fval orange" id="pipe-calc-show"></span>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -1210,10 +1081,10 @@
 
                 <div class="input-group">
                     <label class="input-label">รูปแบบการจ่ายน้ำ</label>
-                    <select id="delivery-type" onchange="updateDeliveryHead()" style="width: 100%;">
+                    <select id="delivery-type" onchange="updateDeliveryType()">
                         <option value="">-- เลือกรูปแบบการจ่ายน้ำ --</option>
-                        <option value="0">ปากท่อ PVC (0 ม.)</option>
-                        <option value="manual">หัวน้ำหยด Dripper (คำนวณจากแรงดัน)</option>
+                        <option value="pvc">ปากท่อ PVC (0 ม.)</option>
+                        <option value="drip">หัวน้ำหยด Dripper (คำนวณจากแรงดัน)</option>
                         <option value="sprinkler">สปริงเกอร์ (คำนวณจากแรงดัน)</option>
                     </select>
                 </div>
@@ -1223,62 +1094,48 @@
                         <label class="input-label">แรงดันใช้งาน</label>
                         <span class="input-hint">ค้นหาจากผู้ผลิตของหัวสปริงเกอร์</span>
                         <div class="input-wrapper">
-                            <input type="number" id="delivery-pressure" placeholder="เช่น 0.5" min="0" step="0.1">
+                            <input type="number" id="delivery-pressure" placeholder="เช่น 0.5" min="0" step="0.1" value="0">
                             <div class="input-unit">บาร์</div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" onclick="calculateDeliveryHead()" style="width: 100%;">
-                        <i class="fas fa-calculator"></i> คำนวณ Head (การจ่ายน้ำ)
-                    </button>
-                </div>
-
-                <div id="delivery-result" style="display: none; margin-top: 16px;">
-                    <div class="result-box">
-                        <h3>Head จากรูปแบบการจ่ายน้ำ</h3>
-                        <div class="result-value" id="delivery-result-value">0</div>
-                        <div class="result-unit">เมตร</div>
-                    </div>
-                    <div class="formula-box purple" style="margin-top: 16px;">
-                        <div class="formula-line">
-                            <span class="fval purple" id="delivery-calc-show"></span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- TOTAL HEAD CALCULATION -->
+            <!-- CALCULATE BUTTON -->
             <div class="card" style="border: 2px solid var(--gold); background: linear-gradient(135deg, #FFFBE6 0%, #FFF8CC 100%);">
-                <div class="card-title" style="color: var(--gold);">
-                    <i class="fas fa-crown"></i> Head ปั๊มทั้งหมด
-                </div>
-
-                <button class="btn btn-primary" onclick="calculateTotalHead()" style="width: 100%; padding: 16px;">
-                    <i class="fas fa-plus"></i> คำนวณ Head ทั้งหมด
+                <button class="btn btn-primary" onclick="calculateTotalHead()" style="width: 100%; padding: 16px; font-size: 18px;">
+                    <i class="fas fa-crown"></i> คำนวณ Head ปั๊มทั้งหมด
                 </button>
+            </div>
 
-                <div id="total-result" style="display: none; margin-top: 20px;">
+            <!-- RESULT -->
+            <div id="total-result" style="display: none;">
+                <div class="card">
+                    <div class="result-box">
+                        <h3>🎯 ผลลัพธ์ Head ปั๊มทั้งหมด</h3>
+                        <div class="result-value" id="summary-total">0</div>
+                        <div class="result-unit">เมตร</div>
+                    </div>
+
                     <div class="summary-box">
                         <div class="summary-item">
-                            <strong>Head ระยะส่งแนวดิ่ง:</strong>
+                            <strong>1️⃣ Head ระยะส่งแนวดิ่ง:</strong>
                             <span id="summary-vertical">0 ม.</span>
                         </div>
                         <div class="summary-item">
-                            <strong>Head จากความยาวท่อ:</strong>
+                            <strong>2️⃣ Head จากความยาวท่อ:</strong>
                             <span id="summary-pipe">0 ม.</span>
                         </div>
                         <div class="summary-item">
-                            <strong>Head จากรูปแบบการจ่ายน้ำ:</strong>
+                            <strong>3️⃣ Head จากรูปแบบการจ่ายน้ำ:</strong>
                             <span id="summary-delivery">0 ม.</span>
-                        </div>
-                        <div class="summary-total">
-                            Head ปั๊มทั้งหมด = <span id="summary-total">0</span> เมตร
                         </div>
                     </div>
 
-                    <div class="alert alert-success" style="margin-top: 16px;">
+                    <div class="alert alert-success" style="margin-top: 20px;">
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>⚡ หลักการเลือกปั๊ม:</strong> ให้เลือกปั๊มที่มี Head Max อย่างน้อย <span id="recommended-head">0</span> เมตร (70% ของ Head ที่คำนวณได้ต้องมากกว่า Head Max ของปั๊ม)
+                            <strong>⚡ คำแนะนำ:</strong> ให้เลือกปั๊มที่มี Head Max อย่างน้อย <span id="recommended-head">0</span> เมตร (70% ของ Head ที่คำนวณได้)
                         </div>
                     </div>
                 </div>
@@ -1301,8 +1158,8 @@
     </footer>
 
     <script>
-        // State management
-        let state = {
+        // Global state
+        let calculatorState = {
             pumpType: 'borehole',
             verticalHead: 0,
             pipeHead: 0,
@@ -1320,9 +1177,8 @@
 
         // Select pump type for calculator
         function selectPumpType(type) {
-            state.pumpType = type;
+            calculatorState.pumpType = type;
 
-            // Update button states
             if (type === 'borehole') {
                 document.getElementById('btn-borehole').classList.add('btn-primary');
                 document.getElementById('btn-borehole').classList.remove('btn-secondary');
@@ -1340,116 +1196,73 @@
             }
         }
 
-        // Calculate borehole head
-        function calculateBorehead() {
-            const depth = parseFloat(document.getElementById('bore-depth').value) || 0;
-            const waterLevel = parseFloat(document.getElementById('bore-water-level').value) || 0;
-            const deliveryHeight = parseFloat(document.getElementById('bore-delivery-height').value) || 0;
-
-            const head = depth + waterLevel + deliveryHeight;
-            state.verticalHead = head;
-
-            document.getElementById('bore-result').style.display = 'block';
-            document.getElementById('bore-result-value').textContent = head.toFixed(2);
-            document.getElementById('bore-calc-show').innerHTML =
-                `<span class="fval">${depth}</span> + <span class="fval">${waterLevel}</span> + <span class="fval">${deliveryHeight}</span> = <span class="fval result">${head.toFixed(2)} ม.</span>`;
-
-            scrollToElement('bore-result');
-        }
-
-        // Calculate centrifugal head
-        function calculateCenthead() {
-            const suctionDepth = parseFloat(document.getElementById('cent-suction-depth').value) || 0;
-            const deliveryHeight = parseFloat(document.getElementById('cent-delivery-height').value) || 0;
-
-            const head = suctionDepth + deliveryHeight;
-            state.verticalHead = head;
-
-            document.getElementById('cent-result').style.display = 'block';
-            document.getElementById('cent-result-value').textContent = head.toFixed(2);
-            document.getElementById('cent-calc-show').innerHTML =
-                `<span class="fval">${suctionDepth}</span> + <span class="fval">${deliveryHeight}</span> = <span class="fval result">${head.toFixed(2)} ม.</span>`;
-
-            scrollToElement('cent-result');
-        }
-
-        // Calculate pipe head
-        function calculatePipeHead() {
-            const length = parseFloat(document.getElementById('pipe-length').value) || 0;
-            const size = document.getElementById('pipe-size').value;
-
-            if (!size) {
-                alert('⚠️ โปรดเลือกขนาดท่อก่อน');
-                return;
-            }
-
-            const divisors = { '1.5': 15, '2': 20, '3': 30, '4': 40 };
-            const divisor = divisors[size];
-            const head = length / divisor;
-            state.pipeHead = head;
-
-            document.getElementById('pipe-result').style.display = 'block';
-            document.getElementById('pipe-result-value').textContent = head.toFixed(2);
-            document.getElementById('pipe-calc-show').innerHTML =
-                `<span class="fval orange">${length}</span> ÷ <span class="fval orange">${divisor}</span> = <span class="fval result orange">${head.toFixed(2)} ม.</span>`;
-
-            scrollToElement('pipe-result');
-        }
-
-        // Update delivery head input visibility
-        function updateDeliveryHead() {
+        // Update delivery type
+        function updateDeliveryType() {
             const type = document.getElementById('delivery-type').value;
-            const input = document.getElementById('pressure-input');
-            const result = document.getElementById('delivery-result');
+            const pressureInput = document.getElementById('pressure-input');
 
-            state.deliveryType = type;
-
-            if (type === '0') {
-                state.deliveryHead = 0;
-                input.style.display = 'none';
-                result.style.display = 'none';
-            } else if (type === 'manual' || type === 'sprinkler') {
-                input.style.display = 'block';
-                result.style.display = 'none';
+            if (type === 'pvc') {
+                calculatorState.deliveryHead = 0;
+                pressureInput.style.display = 'none';
+            } else if (type === 'drip' || type === 'sprinkler') {
+                pressureInput.style.display = 'block';
+            } else {
+                pressureInput.style.display = 'none';
             }
-        }
-
-        // Calculate delivery head
-        function calculateDeliveryHead() {
-            const pressure = parseFloat(document.getElementById('delivery-pressure').value) || 0;
-            const head = pressure * 10;
-            state.deliveryHead = head;
-
-            document.getElementById('delivery-result').style.display = 'block';
-            document.getElementById('delivery-result-value').textContent = head.toFixed(2);
-            document.getElementById('delivery-calc-show').innerHTML =
-                `<span class="fval purple">${pressure}</span> บาร์ × <span class="fval purple">10</span> = <span class="fval result purple">${head.toFixed(2)} ม.</span>`;
-
-            scrollToElement('delivery-result');
         }
 
         // Calculate total head
         function calculateTotalHead() {
-            const vertical = state.verticalHead || 0;
-            const pipe = state.pipeHead || 0;
-            const delivery = state.deliveryHead || 0;
-            const total = vertical + pipe + delivery;
-            const recommended = (total * 1.43).toFixed(2); // 70% rule
+            // Get vertical head based on pump type
+            if (calculatorState.pumpType === 'borehole') {
+                const depth = parseFloat(document.getElementById('bore-depth').value) || 0;
+                const waterLevel = parseFloat(document.getElementById('bore-water-level').value) || 0;
+                const deliveryHeight = parseFloat(document.getElementById('bore-delivery-height').value) || 0;
+                calculatorState.verticalHead = depth + waterLevel + deliveryHeight;
+            } else {
+                const suctionDepth = parseFloat(document.getElementById('cent-suction-depth').value) || 0;
+                const deliveryHeight = parseFloat(document.getElementById('cent-delivery-height').value) || 0;
+                calculatorState.verticalHead = suctionDepth + deliveryHeight;
+            }
 
+            // Get pipe head
+            const pipeLength = parseFloat(document.getElementById('pipe-length').value) || 0;
+            const pipeSize = document.getElementById('pipe-size').value;
+
+            if (pipeSize && pipeLength > 0) {
+                const divisors = { '1.5': 15, '2': 20, '3': 30, '4': 40 };
+                const divisor = divisors[pipeSize];
+                calculatorState.pipeHead = pipeLength / divisor;
+            } else {
+                calculatorState.pipeHead = 0;
+            }
+
+            // Get delivery head
+            const deliveryType = document.getElementById('delivery-type').value;
+            if (deliveryType === 'pvc') {
+                calculatorState.deliveryHead = 0;
+            } else if (deliveryType === 'drip' || deliveryType === 'sprinkler') {
+                const pressure = parseFloat(document.getElementById('delivery-pressure').value) || 0;
+                calculatorState.deliveryHead = pressure * 10;
+            } else {
+                calculatorState.deliveryHead = 0;
+            }
+
+            // Calculate total
+            const total = calculatorState.verticalHead + calculatorState.pipeHead + calculatorState.deliveryHead;
+            const recommended = (total * 1.4286).toFixed(2); // 70% rule means Head Max = Total / 0.7
+
+            // Display results
             document.getElementById('total-result').style.display = 'block';
-            document.getElementById('summary-vertical').textContent = vertical.toFixed(2) + ' ม.';
-            document.getElementById('summary-pipe').textContent = pipe.toFixed(2) + ' ม.';
-            document.getElementById('summary-delivery').textContent = delivery.toFixed(2) + ' ม.';
+            document.getElementById('summary-vertical').textContent = calculatorState.verticalHead.toFixed(2) + ' ม.';
+            document.getElementById('summary-pipe').textContent = calculatorState.pipeHead.toFixed(2) + ' ม.';
+            document.getElementById('summary-delivery').textContent = calculatorState.deliveryHead.toFixed(2) + ' ม.';
             document.getElementById('summary-total').textContent = total.toFixed(2);
             document.getElementById('recommended-head').textContent = recommended;
 
-            scrollToElement('total-result');
-        }
-
-        // Scroll helper
-        function scrollToElement(id) {
+            // Scroll to results
             setTimeout(() => {
-                document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'center' });
+                document.getElementById('total-result').scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 100);
         }
 
