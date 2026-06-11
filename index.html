@@ -748,6 +748,30 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
+
+        /* ── DIAGRAM IMAGE ── */
+        .diagram-image {
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .note-box {
+            margin-top: 20px;
+            padding: 16px;
+            background: #E8F4EC;
+            border-radius: 8px;
+            border-left: 4px solid var(--green-dark);
+        }
+
+        .note-box p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -815,11 +839,15 @@
                         </div>
                     </div>
 
-                    <div style="margin-top: 20px; padding: 16px; background: #E8F4EC; border-radius: 8px;">
-                        <p style="font-size: 14px; color: var(--text-muted);">
-                            <strong>💡 หมายเหตุ:</strong> ความสูงจากพื้นดิน สามารถใช้ตรีโกณมิติคำนวณได้
+                    <div class="note-box">
+                        <p>
+                            <strong>💡 หมายเหตุ:</strong> ความสูงจากพื้นดิน สามารถใช้ตรีโกณมิติคำนวณได้<br>
+                            <strong>ความสูง = ความยาวท่อ × sin(มุม)</strong>
                         </p>
                     </div>
+
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Cdefs%3E%3Cstyle%3E.text%7Bfont-family:Arial,sans-serif;font-size:16px;font-weight:bold%7D.label%7Bfont-family:Arial,sans-serif;font-size:14px;fill:%231B4D35%7D.value%7Bfill:%23F5C842;font-weight:bold%7D%3C/style%3E%3C/defs%3E%3C!-- Ground --%3E%3Crect x='50' y='280' width='500' height='40' fill='%238B7355' opacity='0.8'/%3E%3Crect x='50' y='320' width='500' height='80' fill='%23D2B48C' opacity='0.6'/%3E%3C!-- Well/Bore --%3E%3Crect x='80' y='200' width='40' height='120' fill='%234A90E2' opacity='0.7'/%3E%3Ccircle cx='100' cy='200' r='20' fill='%234A90E2' opacity='0.7'/%3E%3C!-- Pipe going up --%3E%3Cline x1='100' y1='200' x2='150' y2='90' stroke='%234A90E2' stroke-width='8' stroke-linecap='round'/%3E%3C!-- Elevation point --%3E%3Ccircle cx='150' cy='90' r='6' fill='%231B4D35'/%3E%3C!-- Angle indicator --%3E%3Cpath d='M 120 180 Q 130 160 140 150' stroke='%23E07A2F' stroke-width='2' fill='none' stroke-dasharray='5,5'/%3E%3C!-- Dimensions --%3E%3C!-- 20 meters (well depth) --%3E%3Cline x1='30' y1='200' x2='30' y2='280' stroke='%231B4D35' stroke-width='2'/%3E%3Cline x1='25' y1='200' x2='35' y2='200' stroke='%231B4D35' stroke-width='2'/%3E%3Cline x1='25' y1='280' x2='35' y2='280' stroke='%231B4D35' stroke-width='2'/%3E%3Crect x='10' y='235' width='35' height='25' fill='%23F5C842' rx='4'/%3E%3Ctext x='27' y='253' class='value' text-anchor='middle'%3E20 ม.%3C/text%3E%3C!-- 10 meters (water level) --%3E%3Cline x1='30' y1='280' x2='30' y2='310' stroke='%231B4D35' stroke-width='2'/%3E%3Crect x='10' y='290' width='35' height='25' fill='%23F5C842' rx='4'/%3E%3Ctext x='27' y='308' class='value' text-anchor='middle'%3E10 ม.%3C/text%3E%3C!-- 10 meters (up the hill) --%3E%3Cline x1='150' y1='50' x2='150' y2='90' stroke='%231B4D35' stroke-width='2'/%3E%3Cline x1='145' y1='50' x2='155' y2='50' stroke='%231B4D35' stroke-width='2'/%3E%3Cline x1='145' y1='90' x2='155' y2='90' stroke='%231B4D35' stroke-width='2'/%3E%3Crect x='155' y='60' width='35' height='25' fill='%23F5C842' rx='4'/%3E%3Ctext x='190' y='78' class='value'%3E10 ม.%3C/text%3E%3C!-- Pipe length --%3E%3Cline x1='175' y1='120' x2='120' y2='190' stroke='%238B7355' stroke-width='2' stroke-dasharray='3,3'/%3E%3Crect x='130' y='115' width='35' height='25' fill='%23F5C842' rx='4'/%3E%3Ctext x='147' y='133' class='value' text-anchor='middle'%3E14 ม.%3C/text%3E%3C!-- Height gained --%3E%3Cline x1='185' y1='100' x2='185' y2='30' stroke='%232E7D52' stroke-width='3'/%3E%3Crect x='190' y='55' width='40' height='30' fill='%232E7D52' rx='4'/%3E%3Ctext x='210' y='76' class='value' fill='white' text-anchor='middle'%3E6 ม.%3C/text%3E%3C!-- Angle --%3E%3Ctext x='115' y='155' class='label'%3E37°%3C/text%3E%3C!-- Formula --%3E%3Crect x='250' y='10' width='330' height='80' fill='%23E8F4EC' stroke='%231B4D35' stroke-width='2' rx='6'/%3E%3Ctext x='415' y='35' class='text' text-anchor='middle'%3Eความสูง = ความยาวท่อ × sin(มุม)%3C/text%3E%3Ctext x='415' y='60' class='label' text-anchor='middle'%3E6 = 10 × sin(37°)%3C/text%3E%3Ctext x='415' y='80' class='label' text-anchor='middle'%3E✓ ถูกต้อง%3C/text%3E%3C/svg%3E" alt="Trigonometry calculation for borehole pump" class="diagram-image">
+
                 </div>
             </div>
 
