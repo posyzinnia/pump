@@ -921,12 +921,7 @@
                         </p>
                     </div>
 
-                    <div style="margin-top: 20px; padding: 16px; background: #E8F4EC; border-radius: 8px;">
-                        <p style="font-size: 14px; color: var(--text-muted);">
-                            <strong>💡 หมายเหตุ:</strong> ความสูงจากพื้นดิน สามารถใช้ตรีโกณมิติคำนวณได้:<br>
-                            <code style="background: rgba(27,77,53,0.1); padding: 4px 8px; border-radius: 4px;">ความสูง = ความยาวท่อ × sin(มุม)</code>
-                        </p>
-                    </div>
+            
                 </div>
             </div>
 
@@ -953,6 +948,33 @@
                             <div class="step-dot dot-green">2</div>
                             <p><strong>ความสูงในการส่งน้ำ:</strong> ความสูงที่ส่งน้ำไป จากระดับพื้นดิน (เมตร)</p>
                         </div>
+                    </div>
+                    <div style="margin-top: 20px; padding: 16px; background: #E8F4EC; border-radius: 8px;">
+                        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 10px;">
+                            <strong>💡 วิธีหาความสูงในการส่งน้ำจากพื้นดินโดยคิดจากความยาวท่อเอียง</strong>
+                        </p>
+                    
+                        <ol style="margin: 0; padding-left: 20px; color: var(--text-muted); line-height: 1.8;">
+                            <li>วัดมุมของท่อจากแนวระดับที่ตีนเขา</li>
+                            <li>วัดความยาวของท่อเอียงทั้งหมด</li>
+                            <li>ใช้ค่าตรีโกณมิติ (Sin) เพื่อคำนวณความสูง</li>
+                        </ol>
+                    
+                        <div style="margin-top: 12px; padding: 10px; background: rgba(27,77,53,0.08); border-radius: 6px;">
+                            <strong>สูตร:</strong>
+                            <code style="background: rgba(27,77,53,0.1); padding: 4px 8px; border-radius: 4px;">
+                                ความสูง = ความยาวท่อ × sin(มุม)
+                            </code>
+                        </div>
+                    
+                        <p style="margin-top: 10px; color: var(--text-muted);">
+                            ตัวอย่าง: ท่อยาว 10 เมตร และมีมุม 37°<br>
+                            ความสูง = 10 × sin(37°) ≈ 6 เมตร
+                        </p>
+                    
+                        <p style="margin-top: 12px; color: var(--text-muted);">
+                            📱 หากไม่ทราบค่าความยาวท่อเอียง สามารถใช้ Application <strong>LING</strong> คำนวณความสูงได้ 
+                        </p>
                     </div>
                 </div>
             </div>
