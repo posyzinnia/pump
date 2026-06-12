@@ -860,22 +860,22 @@
 
                     <div class="formula-box green">
                         <div class="formula-line">
-                            <strong>Head = <span style="color: red">ระยะสูบน้ำ (20 เมตร)</span> + <span style="color: blue">ระดับน้ำปากบ่อ</span> + ความสูงจากพื้นดิน</strong>
+                            <strong>Head = <span style="color: red">ระยะสูบน้ำ (20 เมตร)</span> + <span style="color: blue">ระดับน้ำปากบ่อ</span> + ความสูงในการส่งน้ำจากระดับพื้นดิน</strong>
                         </div>
                     </div>
 
                     <div class="steps">
                         <div class="step">
                             <div class="step-dot dot-green">1</div>
-                            <p><strong>ระยะสูบน้ำ:</strong> <span style="color: red; font-weight: bold;">20 เมตร</span></p>
+                            <p><strong><span style="color: red">ระยะสูบน้ำ:</span></strong> <span style="color: red; font-weight: bold;">20 เมตร</span></p>
                         </div>
                         <div class="step">
                             <div class="step-dot dot-green">2</div>
-                            <p><strong>ระดับน้ำปากบ่อ:</strong> ระยะจากผิวน้ำถึงปากบ่อ (เมตร)</p>
+                            <p><strong><span style="color: blue">ระดับน้ำปากบ่อ:</span></strong> ระยะจากผิวน้ำถึงปากบ่อ (เมตร)</p>
                         </div>
                         <div class="step">
                             <div class="step-dot dot-green">3</div>
-                            <p><strong>ความสูงจากพื้นดิน:</strong> ความสูงที่ส่งน้ำไป (เมตร)</p>
+                            <p><strong>ความสูงในการส่งน้ำจากระดับพื้นดิน:</strong> ความสูงจากพื้นดินถึงจุดจ่ายน้ำ (เมตร)</p>
                         </div>
                     </div>
                     <div style="margin-top: 20px; padding: 16px; background: #E8F4EC; border-radius: 8px;">
@@ -957,7 +957,7 @@
                     <div class="steps">
                         <div class="step">
                             <div class="step-dot dot-green">1</div>
-                            <p><strong>ระดับน้ำปากบ่อ:</strong> ระยะจากผิวน้ำถึงปั๊ม (เมตร)</p>
+                            <p><strong><span style="color: blue">ระดับน้ำปากบ่อ:</span></strong> ระยะจากผิวน้ำถึงปั๊ม (เมตร)</p>
                         </div>
                         <div class="step">
                             <div class="step-dot dot-green">2</div>
@@ -1184,6 +1184,10 @@
             </div>
 
             <div class="card">
+                <div class="card-title">
+                    <span class="tag tag-green">ส่วนที่ 1</span>
+                    Head จากระยะส่งน้ำในแนวดิ่ง
+                </div>
                 <!-- PUMP TYPE SELECTION -->
                 <div class="input-group">
                     <label class="input-label">📋 เลือกประเภทปั๊ม</label>
@@ -1203,8 +1207,8 @@
                     </div>
 
                     <div class="input-group">
-                        <label class="input-label">ระยะสูบน้ำ (ความลึกบ่อ)</label>
-                        <span class="input-hint">ความลึกจากปากบ่อถึงต่อท่อ</span>
+                        <label class="input-label">ระยะสูบน้ำ <span style="color: red; font-weight: bold;">20 เมตร</span></label>
+                        <span class="input-hint">เพื่อประสิทธิภาพสูงสุด</span>
                         <div class="input-wrapper">
                             <input type="number" id="bore-depth" placeholder="เช่น 20" min="0" step="0.1">
                             <div class="input-unit">เมตร</div>
@@ -1213,7 +1217,7 @@
 
                     <div class="input-group">
                         <label class="input-label">ระดับน้ำปากบ่อ</label>
-                        <span class="input-hint">ความลึกของบ่อ - ระยะสูบน้ำ</span>
+                        <span class="input-hint">ระยะจากผิวน้ำถึงปากบ่อ</span>
                         <div class="input-wrapper">
                             <input type="number" id="bore-water-level" placeholder="เช่น 10" min="0" step="0.1">
                             <div class="input-unit">เมตร</div>
@@ -1221,7 +1225,7 @@
                     </div>
 
                     <div class="input-group">
-                        <label class="input-label">ความสูงในการส่งน้ำจากพื้นดิน</label>
+                        <label class="input-label">ความสูงในการส่งน้ำจากระดับพื้นดิน</label>
                         <span class="input-hint">ความสูงจากพื้นดินถึงจุดจ่ายน้ำ</span>
                         <div class="input-wrapper">
                             <input type="number" id="bore-delivery-height" placeholder="เช่น 16" min="0" step="0.1">
@@ -1253,8 +1257,8 @@
                     </div>
 
                     <div class="input-group">
-                        <label class="input-label">ความลึกของท่อหัวดูด</label>
-                        <span class="input-hint">ระยะจากผิวน้ำถึงปั๊ม</span>
+                        <label class="input-label">ระดับน้ำปากบ่อ</label>
+                        <span class="input-hint">ระยะจากผิวน้ำถึงปั๊ม </span>
                         <div class="input-wrapper">
                             <input type="number" id="cent-suction-depth" placeholder="เช่น 4" min="0" step="0.1">
                             <div class="input-unit">เมตร</div>
@@ -1263,7 +1267,7 @@
 
                     <div class="input-group">
                         <label class="input-label">ความสูงในการส่งน้ำ</label>
-                        <span class="input-hint">ความสูงจากพื้นดินถึงจุดจ่ายน้ำ</span>
+                        <span class="input-hint">ความสูงที่ส่งน้ำไป</span>
                         <div class="input-wrapper">
                             <input type="number" id="cent-delivery-height" placeholder="เช่น 2" min="0" step="0.1">
                             <div class="input-unit">เมตร</div>
@@ -1345,16 +1349,16 @@
                     <label class="input-label">รูปแบบการจ่ายน้ำ</label>
                     <select id="delivery-type" onchange="updateDeliveryHead()" style="width: 100%;">
                         <option value="">-- เลือกรูปแบบการจ่ายน้ำ --</option>
-                        <option value="0">ปากท่อ PVC (0 ม.)</option>
-                        <option value="manual">หัวน้ำหยด Dripper (คำนวณจากแรงดัน)</option>
-                        <option value="sprinkler">สปริงเกอร์ (คำนวณจากแรงดัน)</option>
+                        <option value="0">ปากท่อ PVC</option>
+                        <option value="manual">หัวน้ำหยด Dripper</option>
+                        <option value="sprinkler">สปริงเกอร์</option>
                     </select>
                 </div>
 
                 <div id="pressure-input" style="display: none;">
                     <div class="input-group">
                         <label class="input-label">แรงดันใช้งาน</label>
-                        <span class="input-hint">ค้นหาจากผู้ผลิตของหัวสปริงเกอร์</span>
+                        <span class="input-hint">โดยทั่วไปหัวน้ำหยด = 0.5 บาร์ และ สปริงเกอร์ = 1 บาร์</span>
                         <div class="input-wrapper">
                             <input type="number" id="delivery-pressure" placeholder="เช่น 0.5" min="0" step="0.1">
                             <div class="input-unit">บาร์</div>
